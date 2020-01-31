@@ -1,0 +1,4 @@
+FIleChannel.transferto(0,filechannel.size()，socketChannel);
+windows下一次调用transferTo只能发送8mb，就需要分段传输
+
+linux下一个transferTo就可以完成传输
