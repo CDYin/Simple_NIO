@@ -6,6 +6,5 @@ import java.nio.channels.SocketChannel;
 public class ClientHandler extends SimpleChannelInboundHandler<SocketChannel> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, SocketChannel msg) throws Exception {
-
     }
 }
