@@ -11,7 +11,7 @@ public class FileChannelTest {
     public static void main(String[] args) throws IOException {
         String str = "hello";
         //  创建一个输出流
-        FileOutputStream fileOutputStream = new FileOutputStream("D:\\1.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\11578\\IdeaProjects\\TrayTest\\src\\main\\java\\NIO\\sss");
          //通过fileOutputStream获取对应的FileChannel
         //这个filechannel真是类型是FileChannelImpl
         FileChannel fileChannel = fileOutputStream.getChannel();

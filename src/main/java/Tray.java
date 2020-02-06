@@ -16,7 +16,7 @@ public class Tray {
     }
     public static void createGUI() {
         final JFrame frame = new JFrame("TrayTest");
-        frame.setSize(300, 300);
+        frame.setSize(1280, 720);
         frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE); // 点击关闭按钮时隐藏窗口
         frame.setLocationRelativeTo(null);
 
@@ -24,7 +24,7 @@ public class Tray {
             // 获取当前平台的系统托盘
             SystemTray tray = SystemTray.getSystemTray();
             // 加载一个图片用于托盘图标的显示
-            Image image = Toolkit.getDefaultToolkit().getImage("1574338194703.jpeg");
+            Image image = Toolkit.getDefaultToolkit().getImage("C:\\Users\\11578\\IdeaProjects\\TrayTest\\src\\main\\resources\\1574338194703.jpeg");
             // 创建点击图标时的弹出菜单
             PopupMenu popupMenu = new PopupMenu();
 
