@@ -3,6 +3,9 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.timeout.IdleStateHandler;
+
+import java.util.concurrent.TimeUnit;
 
 public class NettyTestServer {
     public static void main(String[] args) {
@@ -29,6 +32,22 @@ public class NettyTestServer {
                     @Override
                     protected void initChannel(SocketChannel socketChannel) throws Exception {
                         socketChannel.pipeline().addLast(new NettyServerrHandler());
+
+                        //加入一个netty提供的IdleStateHandler
+                        /*
+                        1、IdleStateHandler是netty提供的处理空闲状态的处理器
+                        2、Long readerIdleTime：表示多长时间没有读，就会发送一个心跳检测包检测是否继续连接
+                        3、Long writeIdleTime：表示多长时间没有写，就会发送一个心跳检测包检测是否继续连接
+                        4、Long allIdleTime：表示多长时间没有读写，就会发送一个心跳检测包检测是否继续连接
+                        5、文档说明
+                        trigger an{@Link IdleStateEvent} when a {@Link channel} has not performd
+                        read,write,or both operation for a while
+                        6、当IdleStateEvent触发后，就会传递给管道的下一个Handler去处理
+                        通过调用（触发）下一个handler的userEventTrigger
+                         */
+                        socketChannel.pipeline().addLast(new IdleStateHandler(3,5,7, TimeUnit.SECONDS));
+                        socketChannel.pipeline().addLast(null);
+
                     }
                 });//给我们的workergroupde1Eventloop对应的管道设置处理器
 
