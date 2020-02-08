@@ -46,7 +46,7 @@ public class NettyTestServer {
                         通过调用（触发）下一个handler的userEventTrigger
                          */
                         socketChannel.pipeline().addLast(new IdleStateHandler(3,5,7, TimeUnit.SECONDS));
-                        socketChannel.pipeline().addLast(null);
+                        socketChannel.pipeline().addLast(new HeartHandler());
 
                     }
                 });//给我们的workergroupde1Eventloop对应的管道设置处理器
